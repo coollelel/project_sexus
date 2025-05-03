@@ -55,6 +55,7 @@ class StarField {
         }, 200);
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     const starField = document.getElementById('starfield');
     const title = document.getElementById('title');
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.getElementById('menu');
     const mainButton = document.getElementById('mainButton');
     const placeholderButton = document.getElementById('placeholderButton');
+    
     const starFieldAnimation = new StarField(starField);
     window.confetti({
         particleCount: 100,
@@ -69,8 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
         origin: { y: 0.6 },
         colors: ['#0f0']
     });
+
     mainButton.style.display = 'none';
     mainButton.style.opacity = 0;
+
     document.addEventListener('click', () => {
         starFieldAnimation.animateIntro();
         title.style.opacity = 1;
@@ -104,5 +108,36 @@ document.addEventListener('DOMContentLoaded', () => {
             title.style.transform = 'translateY(-75px)';
             title.style.transition = 'transform 0.5s ease';
         }, 500);
+    });
+    placeholderButton.addEventListener('click', () => {
+        window.location.href = 'https://sexus.vercel.app/stuff';
+    });
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        const contextMenu = document.createElement('div');
+        contextMenu.id = 'custom-context-menu';
+        contextMenu.innerHTML = `
+            <div class="context-menu-item">GET OUT!!</div>
+        `;
+        contextMenu.style.position = 'fixed';
+        contextMenu.style.left = `${e.clientX}px`;
+        contextMenu.style.top = `${e.clientY}px`;
+        const existingMenu = document.getElementById('custom-context-menu');
+        if (existingMenu) {
+            existingMenu.remove();
+        }
+        document.body.appendChild(contextMenu);
+        contextMenu.querySelector('.context-menu-item').addEventListener('click', () => {
+            contextMenu.remove();
+        });
+        const closeMenu = (e) => {
+            if (!contextMenu.contains(e.target)) {
+                contextMenu.remove();
+                document.removeEventListener('click', closeMenu);
+            }
+        };
+        setTimeout(() => {
+            document.addEventListener('click', closeMenu);
+        }, 0);
     });
 });
