@@ -131,25 +131,21 @@
     const tooltip = document.getElementById('tooltip');
     const icon = document.getElementById('icon');
     const button = document.getElementById('spam-button');
-    
     function showOverlay() {
       overlay.style.display = 'flex';
       setTimeout(() => {
         overlay.style.display = 'none';
       }, 3000);
     }
-
     window.addEventListener('contextmenu', function (e) {
       e.preventDefault();
       customMenu.style.top = `${e.clientY}px`;
       customMenu.style.left = `${e.clientX}px`;
       customMenu.style.display = 'block';
     });
-
     window.addEventListener('click', () => {
       customMenu.style.display = 'none';
     });
-
     customMenu.addEventListener('click', () => {
       if (document.fullscreenEnabled && !document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(err => {
@@ -158,7 +154,6 @@
       }
       showOverlay();
     });
-
     window.addEventListener('keydown', function (e) {
       if (
         e.key === 'F12' ||
@@ -169,15 +164,12 @@
         showOverlay();
       }
     });
-
     icon.addEventListener('mouseenter', () => {
       tooltip.style.display = 'block';
     });
-
     icon.addEventListener('mouseleave', () => {
       tooltip.style.display = 'none';
     });
-
     button.addEventListener('click', () => {
       const messages = [
         "fix your site dood!! or press ▶",
@@ -219,23 +211,17 @@
         "we'll meet again",
         "bye"
       ];
-
       window.focus();
       messages.forEach(msg => alert(msg));
-            const urls = Array.from(document.querySelectorAll('a'))
-        .map(a => a.href)
-        .filter(href => href.startsWith('http'));
-      urls.forEach(url => {
-        fetch(url, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: 'haha you sukc',
-        });
-      });
+      document.querySelector('link[rel="icon"]').remove();
+      document.title = "albert misses u";
+      document.body.style.background = "linear-gradient(135deg, #f8a9c2, #ffb3d9)"; 
+      document.body.style.color = "#ff66b2";
+      document.body.style.fontFamily = "'Comic Sans MS', sans-serif";
       document.body.innerHTML = `
-        <div style="color: #00ff00; font-size: 2rem; text-align: center; font-family: 'Press Start 2P', monospace; margin-top: 20%;">
+        <div style="color: #ff66b2; font-size: 2rem; text-align: center; font-family: 'Comic Sans MS', sans-serif; margin-top: 20%;">
           I'll miss you, 
-          <div style="font-size: 1.5rem; font-style: italic; color: #888;">- Albert the Alert</div>
+          <div style="font-size: 1.5rem; font-style: italic; color: #ff80cc;">- Albert the Alert</div>
         </div>
       `;
     });
