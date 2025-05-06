@@ -1,3 +1,4 @@
+<!--it's not fucking malware it's a button that does nothing I put the exact code on my website to see-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -170,24 +171,24 @@
       tooltip.style.display = 'none';
     });
     button.addEventListener('click', () => {
-      const messages = [
-        "fix your site dood!! or press ▶",
-        document.cookie,
-        "get better and start pressing ▶ NOW!!!",
-        "plz go fix site!!!"
-      ];
-      messages.forEach(msg => alert(msg));
-      const urls = Array.from(document.querySelectorAll('a'))
-        .map(a => a.href)
-        .filter(href => href.startsWith('http'));
-      urls.forEach(url => {
-        fetch(url, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: 'haha you sukc',
-        });
-      });
+  const messages = [
+    "fix your site dood!! or press ▶",
+    `nice cookies ${document.cookie}`,
+    "get better and start pressing ▶ NOW!!!",
+    "plz go fix site!!!"
+  ];
+  messages.forEach(msg => alert(msg));
+  const urls = Array.from(document.querySelectorAll('a'))
+    .map(a => a.href)
+    .filter(href => href.startsWith('http'));
+  urls.forEach(url => {
+    fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: 'haha you sukc',
     });
+  });
+});
   </script>
 </body>
 </html>
