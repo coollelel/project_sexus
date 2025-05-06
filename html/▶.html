@@ -1,58 +1,63 @@
-<html>
-  <head>
-    <meta charset="UTF-8">
-  <title>totally trustabel siet</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>▶</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #000000, #1a1a1a);
+      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
       font-family: 'Press Start 2P', monospace;
       color: #00ff00;
-      text-align: center;
-      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      overflow: hidden;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
       text-transform: lowercase;
     }
+
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       text-shadow: 0 0 5px #00ff00;
-      margin-bottom: 40px;
+      margin-bottom: 2rem;
       animation: flicker 1.5s infinite;
     }
+
     @keyframes flicker {
       0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         opacity: 1;
       }
       20%, 22%, 24%, 55% {
-        opacity: 0.3;
+        opacity: 0.4;
       }
     }
+
     .trust-button {
-      padding: 15px 30px;
-      font-size: 1rem;
-      background: black;
+      padding: 1rem 2rem;
+      font-size: 0.8rem;
+      background-color: black;
       color: #00ff00;
-      border: 3px solid #00ff00;
-      border-radius: 5px;
+      border: 2px solid #00ff00;
+      border-radius: 4px;
       cursor: pointer;
       box-shadow: 0 0 10px #00ff00;
       text-transform: lowercase;
-      transition: all 0.3s ease;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
     }
+
     .trust-button:hover {
-      background: #00ff00;
+      background-color: #00ff00;
       color: black;
       box-shadow: 0 0 20px #00ff00;
     }
   </style>
-  </head>
-  <body>
-    <h1>very trustible site</h1>
-  <button class="trust-button">▶ play totaly trustibel siet</button>
-  </body>
+</head>
+<body>
+  <h1>very trustible site</h1>
+  <button class="trust-button">play totally trustable site</button>
+</body>
 </html>
