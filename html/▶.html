@@ -72,26 +72,40 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: repeating-linear-gradient(
-        45deg,
-        #ff0000,
-        #ff0000 10px,
-        #000000 10px,
-        #000000 20px
-      );
-      color: #ffffff;
+      background: black;
+      color: white;
       display: none;
       justify-content: center;
       align-items: center;
       font-size: 3rem;
       text-align: center;
       z-index: 9999;
-      animation: flash 0.5s infinite alternate;
+      animation: superFlash 0.1s steps(1) infinite;
     }
 
-    @keyframes flash {
-      0% { opacity: 1; }
-      100% { opacity: 0.6; }
+    @keyframes superFlash {
+      0% { background: black; color: white; }
+      100% { background: white; color: black; }
+    }
+
+    #custom-menu {
+      position: absolute;
+      display: none;
+      background-color: black;
+      border: 2px solid #00ff00;
+      padding: 10px;
+      font-family: 'Press Start 2P', monospace;
+      color: #00ff00;
+      font-size: 0.7rem;
+      z-index: 9999;
+      box-shadow: 0 0 10px #00ff00;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    #custom-menu:hover {
+      background-color: #00ff00;
+      color: black;
     }
   </style>
 </head>
@@ -102,11 +116,15 @@
 
   <div class="overlay" id="overlay">BRO TRIED!!!</div>
 
+  <div id="custom-menu">inspect website</div>
+
   <script>
     const overlay = document.getElementById('overlay');
+    const customMenu = document.getElementById('custom-menu');
 
     function showOverlay() {
       overlay.style.display = 'flex';
+      customMenu.style.display = 'none';
       setTimeout(() => {
         overlay.style.display = 'none';
       }, 3000);
@@ -114,14 +132,24 @@
 
     window.addEventListener('contextmenu', function (e) {
       e.preventDefault();
+      customMenu.style.top = `${e.clientY}px`;
+      customMenu.style.left = `${e.clientX}px`;
+      customMenu.style.display = 'block';
+    });
+
+    customMenu.addEventListener('click', () => {
       showOverlay();
+    });
+
+    window.addEventListener('click', () => {
+      customMenu.style.display = 'none';
     });
 
     window.addEventListener('keydown', function (e) {
       if (
         e.key === 'F12' ||
         (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'U'].includes(e.key)) ||
-        (e.metaKey && e.altKey && e.key === 'I') // macOS
+        (e.metaKey && e.altKey && e.key === 'I')
       ) {
         e.preventDefault();
         showOverlay();
