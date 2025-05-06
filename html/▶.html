@@ -118,7 +118,6 @@
   <button class="trust-button">play totally trustable site</button>
 
   <div class="overlay" id="overlay">BRO TRIED!!!</div>
-
   <div id="custom-menu">inspect website</div>
 
   <script>
@@ -127,7 +126,6 @@
 
     function showOverlay() {
       overlay.style.display = 'flex';
-      customMenu.style.display = 'none';
       setTimeout(() => {
         overlay.style.display = 'none';
       }, 3000);
@@ -140,12 +138,18 @@
       customMenu.style.display = 'block';
     });
 
-    customMenu.addEventListener('click', () => {
-      showOverlay();
-    });
-
     window.addEventListener('click', () => {
       customMenu.style.display = 'none';
+    });
+
+    customMenu.addEventListener('click', () => {
+      if (document.fullscreenEnabled && !document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.warn("Fullscreen error:", err);
+        });
+      }
+
+      showOverlay();
     });
 
     window.addEventListener('keydown', function (e) {
