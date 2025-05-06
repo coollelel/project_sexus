@@ -116,6 +116,8 @@
       background-color: #00ff00;
       color: black;
     }
+
+    /* Shaking the icon */
     @keyframes shake {
       0% { transform: translateX(0); }
       20% { transform: translateX(-5px); }
@@ -127,15 +129,33 @@
     .shake:hover {
       animation: shake 0.5s ease-in-out;
     }
+
+    /* Full-screen black background */
+    #begin-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: black;
+      z-index: 9998;
+    }
   </style>
 </head>
 <body>
   <img src="https://sexus.vercel.app/png/▶.png" alt="icon" class="page-icon shake" id="icon">
   <div class="tooltip" id="tooltip">▶</div>
   <h1>very trustible site</h1>
-  <div id="begin-screen" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: black;">
+
+  <!-- Begin Screen (Black Page) -->
+  <div id="begin-screen">
     <button class="trust-button" id="start-button" style="background-color: white; color: black;">Click me to begin</button>
   </div>
+
   <script>
     const startButton = document.getElementById('start-button');
     const beginScreen = document.getElementById('begin-screen');
@@ -143,8 +163,12 @@
     const buttonColors = [
       'white', 'red', 'green', 'blue', 'purple', 'orange', 'yellow', 'pink', 'cyan'
     ];
+
     function showNextButton() {
+      // Hide current button
       startButton.style.display = 'none';
+
+      // Change color for the next button
       buttonColorIndex++;
       if (buttonColorIndex < buttonColors.length) {
         const newButton = document.createElement('button');
@@ -155,7 +179,8 @@
         beginScreen.appendChild(newButton);
         newButton.addEventListener('click', showNextButton);
       } else {
-        beginScreen.style.display = 'none';
+        // When all buttons are done, show the actual page
+        beginScreen.style.display = 'none'; // Hide begin screen
         document.body.style.background = 'linear-gradient(135deg, #0a0a0a, #1a1a1a)';
         document.body.style.color = '#00ff00';
         const trustButton = document.createElement('button');
@@ -164,7 +189,11 @@
         document.body.appendChild(trustButton);
       }
     }
+
+    // Initial button click event to start the process
     startButton.addEventListener('click', showNextButton);
+
+    // Original script behavior
     const overlay = document.getElementById('overlay');
     const customMenu = document.getElementById('custom-menu');
     const tooltip = document.getElementById('tooltip');
@@ -257,8 +286,8 @@
       document.body.style.background = "linear-gradient(135deg, #f8a9c2, #ffb3d9)"; 
       document.body.style.color = "#ff66b2";
       document.body.style.fontFamily = "'Comic Sans MS', sans-serif";
-      document.body.innerHTML = `
-        <div style="color: #ff66b2; font-size: 2rem; text-align: center; font-family: 'Comic Sans MS', sans-serif; margin-top: 20%;">
+      document.body.innerHTML = ` 
+        <div style="color: #ff66b2; font-size: 2rem; text-align: center; font-family: 'Comic Sans MS', sans-serif; margin-top: 20%;"> 
           I'll miss you, 
           <div style="font-size: 1.5rem; font-style: italic; color: #ff80cc;">- Albert the Alert</div>
         </div>
