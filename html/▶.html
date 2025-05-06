@@ -72,20 +72,23 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: black;
-      color: white;
       display: none;
       justify-content: center;
       align-items: center;
       font-size: 3rem;
       text-align: center;
       z-index: 9999;
-      animation: superFlash 0.1s steps(1) infinite;
+      animation: flashColors 0.1s steps(1, end) infinite;
+      font-family: 'Press Start 2P', monospace;
     }
 
-    @keyframes superFlash {
-      0% { background: black; color: white; }
-      100% { background: white; color: black; }
+    @keyframes flashColors {
+      0%   { background: #ffffff; color: #000000; }
+      20%  { background: #ff0000; color: #ffff00; }
+      40%  { background: #0000ff; color: #00ff00; }
+      60%  { background: #00ffff; color: #ff00ff; }
+      80%  { background: #000000; color: #ffffff; }
+      100% { background: #ffffff; color: #000000; }
     }
 
     #custom-menu {
